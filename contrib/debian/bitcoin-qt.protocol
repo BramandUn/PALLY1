@@ -1,6 +1,6 @@
 [Protocol]
-exec=xsn-qt '%u'
-protocol=xsn
+exec=PALLY1-qt '%u'
+protocol=PALLY1
 input=none
 output=none
 helper=true

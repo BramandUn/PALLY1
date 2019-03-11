@@ -2,16 +2,16 @@
 # Copyright (c) 2014-2017 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test running xsnd with the -rpcbind and -rpcallowip options."""
+"""Test running PALLY1d with the -rpcbind and -rpcallowip options."""
 
 import socket
 import sys
 
-from test_framework.test_framework import XSNTestFramework, SkipTest
+from test_framework.test_framework import PALLY1TestFramework, SkipTest
 from test_framework.util import *
 from test_framework.netutil import *
 
-class RPCBindTest(XSNTestFramework):
+class RPCBindTest(PALLY1TestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.bind_to_localhost_only = False

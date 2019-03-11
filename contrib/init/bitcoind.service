@@ -1,23 +1,23 @@
 # It is not recommended to modify this file in-place, because it will
 # be overwritten during package upgrades. If you want to add further
 # options or overwrite existing ones then use
-# $ systemctl edit xsnd.service
+# $ systemctl edit PALLY1d.service
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/xsn/xsn.conf
+# /etc/PALLY1/PALLY1.conf
 
 [Unit]
-Description=XSN daemon
+Description=PALLY1 daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/xsnd -daemon -conf=/etc/xsn/xsn.conf -pid=/run/xsnd/xsnd.pid
-# Creates /run/xsnd owned by xsn
-RuntimeDirectory=xsnd
-User=xsn
+ExecStart=/usr/bin/PALLY1d -daemon -conf=/etc/PALLY1/PALLY1.conf -pid=/run/PALLY1d/PALLY1d.pid
+# Creates /run/PALLY1d owned by PALLY1
+RuntimeDirectory=PALLY1d
+User=PALLY1
 Type=forking
-PIDFile=/run/xsnd/xsnd.pid
+PIDFile=/run/PALLY1d/PALLY1d.pid
 Restart=on-failure
 
 # Hardening measures

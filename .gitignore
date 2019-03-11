@@ -1,13 +1,13 @@
 *.tar.gz
 
 *.exe
-src/xsn
-src/xsnd
-src/xsn-cli
-src/xsn-tx
-src/test/test_xsn
-src/test/test_xsn_fuzzy
-src/qt/test/test_xsn-qt
+src/PALLY1
+src/PALLY1d
+src/PALLY1-cli
+src/PALLY1-tx
+src/test/test_PALLY1
+src/test/test_PALLY1_fuzzy
+src/qt/test/test_PALLY1-qt
 
 # autoreconf
 Makefile.in
@@ -30,8 +30,8 @@ config.log
 config.status
 configure
 libtool
-src/config/xsn-config.h
-src/config/xsn-config.h.in
+src/config/PALLY1-config.h
+src/config/PALLY1-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -44,11 +44,11 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
-src/qt/xsn-qt.config
-src/qt/xsn-qt.creator
-src/qt/xsn-qt.creator.user
-src/qt/xsn-qt.files
-src/qt/xsn-qt.includes
+src/qt/PALLY1-qt.config
+src/qt/PALLY1-qt.creator
+src/qt/PALLY1-qt.creator.user
+src/qt/PALLY1-qt.files
+src/qt/PALLY1-qt.includes
 
 .deps
 .dirstamp
@@ -80,13 +80,13 @@ src/qt/xsn-qt.includes
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-xsn-qt
-XSN-Qt.app
+PALLY1-qt
+PALLY1-Qt.app
 background.tiff*
 
 # Unit-tests
 Makefile.test
-xsn-qt_test
+PALLY1-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -99,7 +99,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_xsn.coverage/
+test_PALLY1.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -114,7 +114,7 @@ test/cache/*
 
 /doc/doxygen/
 
-libxsnconsensus.pc
+libPALLY1consensus.pc
 contrib/devtools/split-debug.sh
 *creator*
 src/core

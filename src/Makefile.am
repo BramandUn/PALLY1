@@ -24,23 +24,23 @@ BITCOIN_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFL
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBBITCOIN_SERVER=libxsn_server.a
-LIBBITCOIN_COMMON=libxsn_common.a
-LIBBITCOIN_CONSENSUS=libxsn_consensus.a
-LIBBITCOIN_CLI=libxsn_cli.a
-LIBBITCOIN_UTIL=libxsn_util.a
-LIBBITCOIN_CRYPTO=crypto/libxsn_crypto.a
-LIBBITCOINQT=qt/libxsnqt.a
+LIBBITCOIN_SERVER=libPALLY1_server.a
+LIBBITCOIN_COMMON=libPALLY1_common.a
+LIBBITCOIN_CONSENSUS=libPALLY1_consensus.a
+LIBBITCOIN_CLI=libPALLY1_cli.a
+LIBBITCOIN_UTIL=libPALLY1_util.a
+LIBBITCOIN_CRYPTO=crypto/libPALLY1_crypto.a
+LIBBITCOINQT=qt/libPALLY1qt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libxsn_zmq.a
+LIBBITCOIN_ZMQ=libPALLY1_zmq.a
 endif
 if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libxsnconsensus.la
+LIBBITCOINCONSENSUS=libPALLY1consensus.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libxsn_wallet.a
+LIBBITCOIN_WALLET=libPALLY1_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -66,15 +66,15 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += xsnd
+  bin_PROGRAMS += PALLY1d
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += xsn-cli xsn-tx
+  bin_PROGRAMS += PALLY1-cli PALLY1-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# xsn core #
+# PALLY1 core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrdb.h \
@@ -141,7 +141,7 @@ BITCOIN_CORE_H = \
   miner.h \
   net.h \
   net_processing.h \
-  net_processing_xsn.h \
+  net_processing_PALLY1.h \
   netfulfilledman.h \
   netaddress.h \
   netbase.h \
@@ -221,12 +221,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libxsn_util_a-clientversion.$(OBJEXT): obj/build.h
+libPALLY1_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between xsnd and xsn-qt
-libxsn_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libxsn_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libxsn_server_a_SOURCES = \
+# server: shared between PALLY1d and PALLY1-qt
+libPALLY1_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libPALLY1_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1_server_a_SOURCES = \
   activemasternode.cpp \
   addrdb.cpp \
   addrman.cpp \
@@ -260,7 +260,7 @@ libxsn_server_a_SOURCES = \
   miner.cpp \
   net.cpp \
   net_processing.cpp \
-  net_processing_xsn.cpp \
+  net_processing_PALLY1.cpp \
   netfulfilledman.cpp \
   noui.cpp \
   policy/fees.cpp \
@@ -276,7 +276,7 @@ libxsn_server_a_SOURCES = \
   rpc/merchantnode.cpp \
   rpc/rawtransaction.cpp \
   rpc/server.cpp \
-  rpc/xsnmisc.cpp \
+  rpc/PALLY1misc.cpp \
   rpc/governance.cpp\
   script/sigcache.cpp \
   spork.cpp \
@@ -297,20 +297,20 @@ libxsn_server_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
-libxsn_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libxsn_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libxsn_zmq_a_SOURCES = \
+libPALLY1_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libPALLY1_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between xsnd and xsn-qt, but only linked
+# wallet: shared between PALLY1d and PALLY1-qt, but only linked
 # when wallet enabled
-libxsn_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libxsn_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libxsn_wallet_a_SOURCES = \
+libPALLY1_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libPALLY1_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1_wallet_a_SOURCES = \
   interfaces/wallet.cpp \
   wallet/authhelper.cpp \
   wallet/crypter.cpp \
@@ -327,9 +327,9 @@ libxsn_wallet_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libxsn_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
-crypto_libxsn_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
-crypto_libxsn_crypto_a_SOURCES = \
+crypto_libPALLY1_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
+crypto_libPALLY1_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
+crypto_libPALLY1_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.h \
@@ -350,7 +350,7 @@ crypto_libxsn_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # x11
-crypto_libxsn_crypto_a_SOURCES += \
+crypto_libPALLY1_crypto_a_SOURCES += \
   crypto/blake.c \
   crypto/bmw.c \
   crypto/cubehash.c \
@@ -376,13 +376,13 @@ crypto_libxsn_crypto_a_SOURCES += \
   crypto/sph_types.h
 
 if USE_ASM
-crypto_libxsn_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+crypto_libPALLY1_crypto_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libxsn_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libxsn_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libxsn_consensus_a_SOURCES = \
+libPALLY1_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libPALLY1_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -399,7 +399,7 @@ libxsn_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/xsnconsensus.cpp \
+  script/PALLY1consensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -415,10 +415,10 @@ libxsn_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between xsnd, and xsn-qt and non-server tools
-libxsn_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libxsn_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libxsn_common_a_SOURCES = \
+# common: shared between PALLY1d, and PALLY1-qt and non-server tools
+libPALLY1_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libPALLY1_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
   chainparams.cpp \
@@ -443,9 +443,9 @@ libxsn_common_a_SOURCES = \
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libxsn_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libxsn_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libxsn_util_a_SOURCES = \
+libPALLY1_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libPALLY1_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -469,30 +469,30 @@ libxsn_util_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libxsn_util_a_SOURCES += compat/glibc_compat.cpp
+libPALLY1_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between xsn-cli and xsn-qt
-libxsn_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libxsn_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libxsn_cli_a_SOURCES = \
+# cli: shared between PALLY1-cli and PALLY1-qt
+libPALLY1_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libPALLY1_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1_cli_a_SOURCES = \
   rpc/client.cpp \
   $(BITCOIN_CORE_H)
 
-nodist_libxsn_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libPALLY1_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# xsnd binary #
-xsnd_SOURCES = xsnd.cpp
-xsnd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-xsnd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-xsnd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# PALLY1d binary #
+PALLY1d_SOURCES = PALLY1d.cpp
+PALLY1d_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+PALLY1d_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+PALLY1d_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-xsnd_SOURCES += xsnd-res.rc
+PALLY1d_SOURCES += PALLY1d-res.rc
 endif
 
-xsnd_LDADD = \
+PALLY1d_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -506,38 +506,38 @@ xsnd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-xsnd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+PALLY1d_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# xsn-cli binary #
-xsn_cli_SOURCES = xsn-cli.cpp
-xsn_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-xsn_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-xsn_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# PALLY1-cli binary #
+PALLY1_cli_SOURCES = PALLY1-cli.cpp
+PALLY1_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+PALLY1_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+PALLY1_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-xsn_cli_SOURCES += xsn-cli-res.rc
+PALLY1_cli_SOURCES += PALLY1-cli-res.rc
 endif
 
-xsn_cli_LDADD = \
+PALLY1_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-xsn_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+PALLY1_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# xsn-tx binary #
-xsn_tx_SOURCES = xsn-tx.cpp
-xsn_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-xsn_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-xsn_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# PALLY1-tx binary #
+PALLY1_tx_SOURCES = PALLY1-tx.cpp
+PALLY1_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+PALLY1_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+PALLY1_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-xsn_tx_SOURCES += xsn-tx-res.rc
+PALLY1_tx_SOURCES += PALLY1-tx-res.rc
 endif
 
-xsn_tx_LDADD = \
+PALLY1_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -545,22 +545,22 @@ xsn_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-xsn_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+PALLY1_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# xsnconsensus library #
+# PALLY1consensus library #
 if BUILD_BITCOIN_LIBS
-include_HEADERS = script/xsnconsensus.h
-libxsnconsensus_la_SOURCES = $(crypto_libxsn_crypto_a_SOURCES) $(libxsn_consensus_a_SOURCES)
+include_HEADERS = script/PALLY1consensus.h
+libPALLY1consensus_la_SOURCES = $(crypto_libPALLY1_crypto_a_SOURCES) $(libPALLY1_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libxsnconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libPALLY1consensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libxsnconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libxsnconsensus_la_LIBADD = $(LIBSECP256K1)
-libxsnconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
-libxsnconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libPALLY1consensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libPALLY1consensus_la_LIBADD = $(LIBSECP256K1)
+libPALLY1consensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
+libPALLY1consensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -590,12 +590,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/xsn-config.h: config/stamp-h1
+config/PALLY1-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/xsn-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/PALLY1-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/xsn-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/xsn-config.h.in
+$(top_srcdir)/$(subdir)/config/PALLY1-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/PALLY1-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

@@ -1,7 +1,7 @@
-Win32, Linux, MacOSX and source releases for xsn v0.3.23 have been uploaded to
-https://sourceforge.net/projects/xsn/files/XSN/xsn-0.3.23/
+Win32, Linux, MacOSX and source releases for PALLY1 v0.3.23 have been uploaded to
+https://sourceforge.net/projects/PALLY1/files/PALLY1/PALLY1-0.3.23/
 
-This is another quick bugfix release, trying to deal with the influx of new xsn users.
+This is another quick bugfix release, trying to deal with the influx of new PALLY1 users.
 
 Main items of note:
 

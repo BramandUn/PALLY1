@@ -41,7 +41,7 @@ static bool GetBlockHash(uint256 &hash, int nBlockHeight)
 *   Determine if coinbase outgoing created money is the correct value
 *
 *   Why is this needed?
-*   - In Xsn some blocks are superblocks, which output much higher amounts of coins
+*   - In PALLY1 some blocks are superblocks, which output much higher amounts of coins
 *   - Otherblocks are 10% lower in outgoing value, so in total, no extra coins are created
 *   - When non-superblocks are detected, the normal schedule should be maintained
 */
@@ -317,7 +317,7 @@ int CMasternodePayments::GetMinMasternodePaymentsProto() {
 
 void CMasternodePayments::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
-    if(fLiteMode) return; // disable all Xsn specific functionality
+    if(fLiteMode) return; // disable all PALLY1 specific functionality
 
     if (strCommand == NetMsgType::MASTERNODEPAYMENTSYNC) { //Masternode Payments Request Sync
 
@@ -593,7 +593,7 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransactionRef& txNew) co
         }
     }
 
-    LogPrintf("CMasternodeBlockPayees::IsTransactionValid -- ERROR: Missing required payment, possible payees: '%s', amount: %f XSN\n", strPayeesPossible, (float)nMasternodePayment/COIN);
+    LogPrintf("CMasternodeBlockPayees::IsTransactionValid -- ERROR: Missing required payment, possible payees: '%s', amount: %f PALLY1\n", strPayeesPossible, (float)nMasternodePayment/COIN);
     return false;
 }
 

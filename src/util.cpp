@@ -82,10 +82,10 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char * const BITCOIN_CONF_FILENAME = "xsn.conf";
-const char * const BITCOIN_PID_FILENAME = "xsnd.pid";
+const char * const BITCOIN_CONF_FILENAME = "PALLY1.conf";
+const char * const BITCOIN_PID_FILENAME = "PALLY1d.pid";
 
-//XSN only features
+//PALLY1 only features
 bool fMasterNode = false;
 bool fLiteMode = false;
 bool fMerchantNode = false;
@@ -279,7 +279,7 @@ public:
         std::pair<bool,std::string> found_result(false, std::string());
 
         // We pass "true" to GetArgHelper in order to return the last
-        // argument value seen from the command line (so "xsnd -foo=bar
+        // argument value seen from the command line (so "PALLY1d -foo=bar
         // -foo=baz" gives GetArg(am,"foo")=={true,"baz"}
         found_result = GetArgHelper(am.m_override_args, arg, true);
         if (found_result.first) {
@@ -658,7 +658,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(nullptr, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "xsn";
+    const char* pszModule = "PALLY1";
 #endif
     if (pex)
         return strprintf(
@@ -677,13 +677,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\XSN
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\XSN
-    // Mac: ~/Library/Application Support/XSN
-    // Unix: ~/.xsn
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\PALLY1
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\PALLY1
+    // Mac: ~/Library/Application Support/PALLY1
+    // Unix: ~/.PALLY1
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "XSNCore";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "PALLY1Core";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -693,10 +693,10 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/XSNCore";
+    return pathRet / "Library/Application Support/PALLY1Core";
 #else
     // Unix
-    return pathRet / ".xsncore";
+    return pathRet / ".PALLY1core";
 #endif
 #endif
 }
@@ -1247,8 +1247,8 @@ std::string CopyrightHolders(const std::string& strPrefix)
 {
     std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));
 
-    // Check for untranslated substitution to make sure XSN Core copyright is not removed by accident
-    if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION).find("XSN Core") == std::string::npos) {
+    // Check for untranslated substitution to make sure PALLY1 Core copyright is not removed by accident
+    if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION).find("PALLY1 Core") == std::string::npos) {
         strCopyrightHolders += "\n" + strPrefix + "The Bitcoin Core developers";
     }
     return strCopyrightHolders;

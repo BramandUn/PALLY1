@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include <rpc/blockchain.cpp>
-#include <test/test_xsn.h>
+#include <test/test_PALLY1.h>
 
 /* Equality between doubles is imprecise. Comparison should be done
  * with a small threshold of tolerance, rather than exact equality.

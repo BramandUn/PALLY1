@@ -3,9 +3,9 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test deprecation of RPC calls."""
-from test_framework.test_framework import XSNTestFramework
+from test_framework.test_framework import PALLY1TestFramework
 
-class DeprecatedRpcTest(XSNTestFramework):
+class DeprecatedRpcTest(PALLY1TestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.setup_clean_chain = True

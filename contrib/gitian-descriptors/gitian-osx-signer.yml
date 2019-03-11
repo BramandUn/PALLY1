@@ -1,5 +1,5 @@
 ---
-name: "xsn-dmg-signer"
+name: "PALLY1-dmg-signer"
 suites:
 - "trusty"
 architectures:
@@ -7,10 +7,10 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/xsn-core/xsn-detached-sigs.git"
+- "url": "https://github.com/PALLY1-core/PALLY1-detached-sigs.git"
   "dir": "signature"
 files:
-- "xsn-osx-unsigned.tar.gz"
+- "PALLY1-osx-unsigned.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
   mkdir -p ${WRAP_DIR}
@@ -27,8 +27,8 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=xsn-osx-unsigned.tar.gz
-  SIGNED=xsn-osx-signed.dmg
+  UNSIGNED=PALLY1-osx-unsigned.tar.gz
+  SIGNED=PALLY1-osx-signed.dmg
 
   tar -xf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"

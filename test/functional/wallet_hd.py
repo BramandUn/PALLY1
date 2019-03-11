@@ -7,14 +7,14 @@
 import os
 import shutil
 
-from test_framework.test_framework import XSNTestFramework
+from test_framework.test_framework import PALLY1TestFramework
 from test_framework.util import (
     assert_equal,
     connect_nodes_bi,
 )
 
 
-class WalletHDTest(XSNTestFramework):
+class WalletHDTest(PALLY1TestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 2

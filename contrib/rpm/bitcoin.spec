@@ -13,31 +13,31 @@
 %endif
 %endif
 
-Name:		xsn
+Name:		PALLY1
 Version:	0.12.0
 Release:	2%{?dist}
 Summary:	Peer to Peer Cryptographic Currency
 
 Group:		Applications/System
 License:	MIT
-URL:		https://xsn.org/
-Source0:	https://xsn.org/bin/xsn-core-%{version}/xsn-%{version}.tar.gz
+URL:		https://PALLY1.org/
+Source0:	https://PALLY1.org/bin/PALLY1-core-%{version}/PALLY1-%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 
-Source10:	https://raw.githubusercontent.com/xsn/xsn/v%{version}/contrib/debian/examples/xsn.conf
+Source10:	https://raw.githubusercontent.com/PALLY1/PALLY1/v%{version}/contrib/debian/examples/PALLY1.conf
 
 #man pages
-Source20:	https://raw.githubusercontent.com/xsn/xsn/v%{version}/doc/man/xsnd.1
-Source21:	https://raw.githubusercontent.com/xsn/xsn/v%{version}/doc/man/xsn-cli.1
-Source22:	https://raw.githubusercontent.com/xsn/xsn/v%{version}/doc/man/xsn-qt.1
+Source20:	https://raw.githubusercontent.com/PALLY1/PALLY1/v%{version}/doc/man/PALLY1d.1
+Source21:	https://raw.githubusercontent.com/PALLY1/PALLY1/v%{version}/doc/man/PALLY1-cli.1
+Source22:	https://raw.githubusercontent.com/PALLY1/PALLY1/v%{version}/doc/man/PALLY1-qt.1
 
 #selinux
-Source30:	https://raw.githubusercontent.com/xsn/xsn/v%{version}/contrib/rpm/xsn.te
-# Source31 - what about xsn-tx and bench_xsn ???
-Source31:	https://raw.githubusercontent.com/xsn/xsn/v%{version}/contrib/rpm/xsn.fc
-Source32:	https://raw.githubusercontent.com/xsn/xsn/v%{version}/contrib/rpm/xsn.if
+Source30:	https://raw.githubusercontent.com/PALLY1/PALLY1/v%{version}/contrib/rpm/PALLY1.te
+# Source31 - what about PALLY1-tx and bench_PALLY1 ???
+Source31:	https://raw.githubusercontent.com/PALLY1/PALLY1/v%{version}/contrib/rpm/PALLY1.fc
+Source32:	https://raw.githubusercontent.com/PALLY1/PALLY1/v%{version}/contrib/rpm/PALLY1.if
 
-Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/XSN.svg
+Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/PALLY1.svg
 
 %if 0%{?_use_libressl:1}
 BuildRequires:	libressl-devel
@@ -50,13 +50,13 @@ BuildRequires:	autoconf automake libtool
 BuildRequires:	libevent-devel
 
 
-Patch0:		xsn-0.12.0-libressl.patch
+Patch0:		PALLY1-0.12.0-libressl.patch
 
 
 %description
-XSN is a digital cryptographic currency that uses peer-to-peer technology to
+PALLY1 is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
-issuing of xsns is carried out collectively by the network.
+issuing of PALLY1s is carried out collectively by the network.
 
 %if %{_buildqt}
 %package core
@@ -79,42 +79,42 @@ BuildRequires:	%{_bindir}/inkscape
 BuildRequires:	%{_bindir}/convert
 
 %description core
-XSN is a digital cryptographic currency that uses peer-to-peer technology to
+PALLY1 is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
-issuing of xsns is carried out collectively by the network.
+issuing of PALLY1s is carried out collectively by the network.
 
 This package contains the Qt based graphical client and node. If you are looking
-to run a XSN wallet, this is probably the package you want.
+to run a PALLY1 wallet, this is probably the package you want.
 %endif
 
 
 %package libs
-Summary:	XSN shared libraries
+Summary:	PALLY1 shared libraries
 Group:		System Environment/Libraries
 
 %description libs
-This package provides the xsnconsensus shared libraries. These libraries
+This package provides the PALLY1consensus shared libraries. These libraries
 may be used by third party software to provide consensus verification
 functionality.
 
 Unless you know need this package, you probably do not.
 
 %package devel
-Summary:	Development files for xsn
+Summary:	Development files for PALLY1
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 This package contains the header files and static library for the
-xsnconsensus shared library. If you are developing or compiling software
+PALLY1consensus shared library. If you are developing or compiling software
 that wants to link against that library, then you need this package installed.
 
 Most people do not need this package installed.
 
 %package server
-Summary:	The xsn daemon
+Summary:	The PALLY1 daemon
 Group:		System Environment/Daemons
-Requires:	xsn-utils = %{version}-%{release}
+Requires:	PALLY1-utils = %{version}-%{release}
 Requires:	selinux-policy policycoreutils-python
 Requires(pre):	shadow-utils
 Requires(post):	%{_sbindir}/semodule %{_sbindir}/restorecon %{_sbindir}/fixfiles %{_sbindir}/sestatus
@@ -124,34 +124,34 @@ BuildRequires:	checkpolicy
 BuildRequires:	%{_datadir}/selinux/devel/Makefile
 
 %description server
-This package provides a stand-alone xsn-core daemon. For most users, this
+This package provides a stand-alone PALLY1-core daemon. For most users, this
 package is only needed if they need a full-node without the graphical client.
 
 Some third party wallet software will want this package to provide the actual
-xsn-core node they use to connect to the network.
+PALLY1-core node they use to connect to the network.
 
-If you use the graphical xsn-core client then you almost certainly do not
+If you use the graphical PALLY1-core client then you almost certainly do not
 need this package.
 
 %package utils
-Summary:	XSN utilities
+Summary:	PALLY1 utilities
 Group:		Applications/System
 
 %description utils
 This package provides several command line utilities for interacting with a
-xsn-core daemon.
+PALLY1-core daemon.
 
-The xsn-cli utility allows you to communicate and control a xsn daemon
-over RPC, the xsn-tx utility allows you to create a custom transaction, and
-the bench_xsn utility can be used to perform some benchmarks.
+The PALLY1-cli utility allows you to communicate and control a PALLY1 daemon
+over RPC, the PALLY1-tx utility allows you to create a custom transaction, and
+the bench_PALLY1 utility can be used to perform some benchmarks.
 
-This package contains utilities needed by the xsn-server package.
+This package contains utilities needed by the PALLY1-server package.
 
 
 %prep
 %setup -q
 %patch0 -p1 -b .libressl
-cp -p %{SOURCE10} ./xsn.conf.example
+cp -p %{SOURCE10} ./PALLY1.conf.example
 tar -zxf %{SOURCE1}
 cp -p db-%{bdbv}.NC/LICENSE ./db-%{bdbv}.NC-LICENSE
 mkdir db4 SELinux
@@ -172,7 +172,7 @@ make %{?_smp_mflags}
 pushd SELinux
 for selinuxvariant in %{selinux_variants}; do
 	make NAME=${selinuxvariant} -f %{_datadir}/selinux/devel/Makefile
-	mv xsn.pp xsn.pp.${selinuxvariant}
+	mv PALLY1.pp PALLY1.pp.${selinuxvariant}
 	make NAME=${selinuxvariant} -f %{_datadir}/selinux/devel/Makefile clean
 done
 popd
@@ -182,42 +182,42 @@ popd
 make install DESTDIR=%{buildroot}
 
 mkdir -p -m755 %{buildroot}%{_sbindir}
-mv %{buildroot}%{_bindir}/xsnd %{buildroot}%{_sbindir}/xsnd
+mv %{buildroot}%{_bindir}/PALLY1d %{buildroot}%{_sbindir}/PALLY1d
 
 # systemd stuff
 mkdir -p %{buildroot}%{_tmpfilesdir}
-cat <<EOF > %{buildroot}%{_tmpfilesdir}/xsn.conf
-d /run/xsnd 0750 xsn xsn -
+cat <<EOF > %{buildroot}%{_tmpfilesdir}/PALLY1.conf
+d /run/PALLY1d 0750 PALLY1 PALLY1 -
 EOF
-touch -a -m -t 201504280000 %{buildroot}%{_tmpfilesdir}/xsn.conf
+touch -a -m -t 201504280000 %{buildroot}%{_tmpfilesdir}/PALLY1.conf
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-cat <<EOF > %{buildroot}%{_sysconfdir}/sysconfig/xsn
-# Provide options to the xsn daemon here, for example
+cat <<EOF > %{buildroot}%{_sysconfdir}/sysconfig/PALLY1
+# Provide options to the PALLY1 daemon here, for example
 # OPTIONS="-testnet -disable-wallet"
 
 OPTIONS=""
 
 # System service defaults.
 # Don't change these unless you know what you're doing.
-CONFIG_FILE="%{_sysconfdir}/xsn/xsn.conf"
-DATA_DIR="%{_localstatedir}/lib/xsn"
-PID_FILE="/run/xsnd/xsnd.pid"
+CONFIG_FILE="%{_sysconfdir}/PALLY1/PALLY1.conf"
+DATA_DIR="%{_localstatedir}/lib/PALLY1"
+PID_FILE="/run/PALLY1d/PALLY1d.pid"
 EOF
-touch -a -m -t 201504280000 %{buildroot}%{_sysconfdir}/sysconfig/xsn
+touch -a -m -t 201504280000 %{buildroot}%{_sysconfdir}/sysconfig/PALLY1
 
 mkdir -p %{buildroot}%{_unitdir}
-cat <<EOF > %{buildroot}%{_unitdir}/xsn.service
+cat <<EOF > %{buildroot}%{_unitdir}/PALLY1.service
 [Unit]
-Description=XSN daemon
+Description=PALLY1 daemon
 After=syslog.target network.target
 
 [Service]
 Type=forking
-ExecStart=%{_sbindir}/xsnd -daemon -conf=\${CONFIG_FILE} -datadir=\${DATA_DIR} -pid=\${PID_FILE} \$OPTIONS
-EnvironmentFile=%{_sysconfdir}/sysconfig/xsn
-User=xsn
-Group=xsn
+ExecStart=%{_sbindir}/PALLY1d -daemon -conf=\${CONFIG_FILE} -datadir=\${DATA_DIR} -pid=\${PID_FILE} \$OPTIONS
+EnvironmentFile=%{_sysconfdir}/sysconfig/PALLY1
+User=PALLY1
+Group=PALLY1
 
 Restart=on-failure
 PrivateTmp=true
@@ -229,63 +229,63 @@ StartLimitBurst=5
 [Install]
 WantedBy=multi-user.target
 EOF
-touch -a -m -t 201504280000 %{buildroot}%{_unitdir}/xsn.service
+touch -a -m -t 201504280000 %{buildroot}%{_unitdir}/PALLY1.service
 #end systemd stuff
 
-mkdir %{buildroot}%{_sysconfdir}/xsn
-mkdir -p %{buildroot}%{_localstatedir}/lib/xsn
+mkdir %{buildroot}%{_sysconfdir}/PALLY1
+mkdir -p %{buildroot}%{_localstatedir}/lib/PALLY1
 
 #SELinux
 for selinuxvariant in %{selinux_variants}; do
 	install -d %{buildroot}%{_datadir}/selinux/${selinuxvariant}
-	install -p -m 644 SELinux/xsn.pp.${selinuxvariant} %{buildroot}%{_datadir}/selinux/${selinuxvariant}/xsn.pp
+	install -p -m 644 SELinux/PALLY1.pp.${selinuxvariant} %{buildroot}%{_datadir}/selinux/${selinuxvariant}/PALLY1.pp
 done
 
 %if %{_buildqt}
 # qt icons
-install -D -p share/pixmaps/xsn.ico %{buildroot}%{_datadir}/pixmaps/xsn.ico
+install -D -p share/pixmaps/PALLY1.ico %{buildroot}%{_datadir}/pixmaps/PALLY1.ico
 install -p share/pixmaps/nsis-header.bmp %{buildroot}%{_datadir}/pixmaps/
 install -p share/pixmaps/nsis-wizard.bmp %{buildroot}%{_datadir}/pixmaps/
-install -p %{SOURCE100} %{buildroot}%{_datadir}/pixmaps/xsn.svg
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/xsn16.png -w16 -h16
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/xsn32.png -w32 -h32
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/xsn64.png -w64 -h64
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/xsn128.png -w128 -h128
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/xsn256.png -w256 -h256
-%{_bindir}/convert -resize 16x16 %{buildroot}%{_datadir}/pixmaps/xsn256.png %{buildroot}%{_datadir}/pixmaps/xsn16.xpm
-%{_bindir}/convert -resize 32x32 %{buildroot}%{_datadir}/pixmaps/xsn256.png %{buildroot}%{_datadir}/pixmaps/xsn32.xpm
-%{_bindir}/convert -resize 64x64 %{buildroot}%{_datadir}/pixmaps/xsn256.png %{buildroot}%{_datadir}/pixmaps/xsn64.xpm
-%{_bindir}/convert -resize 128x128 %{buildroot}%{_datadir}/pixmaps/xsn256.png %{buildroot}%{_datadir}/pixmaps/xsn128.xpm
-%{_bindir}/convert %{buildroot}%{_datadir}/pixmaps/xsn256.png %{buildroot}%{_datadir}/pixmaps/xsn256.xpm
+install -p %{SOURCE100} %{buildroot}%{_datadir}/pixmaps/PALLY1.svg
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/PALLY116.png -w16 -h16
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/PALLY132.png -w32 -h32
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/PALLY164.png -w64 -h64
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/PALLY1128.png -w128 -h128
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/PALLY1256.png -w256 -h256
+%{_bindir}/convert -resize 16x16 %{buildroot}%{_datadir}/pixmaps/PALLY1256.png %{buildroot}%{_datadir}/pixmaps/PALLY116.xpm
+%{_bindir}/convert -resize 32x32 %{buildroot}%{_datadir}/pixmaps/PALLY1256.png %{buildroot}%{_datadir}/pixmaps/PALLY132.xpm
+%{_bindir}/convert -resize 64x64 %{buildroot}%{_datadir}/pixmaps/PALLY1256.png %{buildroot}%{_datadir}/pixmaps/PALLY164.xpm
+%{_bindir}/convert -resize 128x128 %{buildroot}%{_datadir}/pixmaps/PALLY1256.png %{buildroot}%{_datadir}/pixmaps/PALLY1128.xpm
+%{_bindir}/convert %{buildroot}%{_datadir}/pixmaps/PALLY1256.png %{buildroot}%{_datadir}/pixmaps/PALLY1256.xpm
 touch %{buildroot}%{_datadir}/pixmaps/*.png -r %{SOURCE100}
 touch %{buildroot}%{_datadir}/pixmaps/*.xpm -r %{SOURCE100}
 
 # Desktop File - change the touch timestamp if modifying
 mkdir -p %{buildroot}%{_datadir}/applications
-cat <<EOF > %{buildroot}%{_datadir}/applications/xsn-core.desktop
+cat <<EOF > %{buildroot}%{_datadir}/applications/PALLY1-core.desktop
 [Desktop Entry]
 Encoding=UTF-8
-Name=XSN
-Comment=XSN P2P Cryptocurrency
-Comment[fr]=XSN, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=XSN, eşten eşe kriptografik sanal para birimi
-Exec=xsn-qt %u
+Name=PALLY1
+Comment=PALLY1 P2P Cryptocurrency
+Comment[fr]=PALLY1, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=PALLY1, eşten eşe kriptografik sanal para birimi
+Exec=PALLY1-qt %u
 Terminal=false
 Type=Application
-Icon=xsn128
-MimeType=x-scheme-handler/xsn;
+Icon=PALLY1128
+MimeType=x-scheme-handler/PALLY1;
 Categories=Office;Finance;
 EOF
 # change touch date when modifying desktop
-touch -a -m -t 201511100546 %{buildroot}%{_datadir}/applications/xsn-core.desktop
-%{_bindir}/desktop-file-validate %{buildroot}%{_datadir}/applications/xsn-core.desktop
+touch -a -m -t 201511100546 %{buildroot}%{_datadir}/applications/PALLY1-core.desktop
+%{_bindir}/desktop-file-validate %{buildroot}%{_datadir}/applications/PALLY1-core.desktop
 
 # KDE protocol - change the touch timestamp if modifying
 mkdir -p %{buildroot}%{_datadir}/kde4/services
-cat <<EOF > %{buildroot}%{_datadir}/kde4/services/xsn-core.protocol
+cat <<EOF > %{buildroot}%{_datadir}/kde4/services/PALLY1-core.protocol
 [Protocol]
-exec=xsn-qt '%u'
-protocol=xsn
+exec=PALLY1-qt '%u'
+protocol=PALLY1
 input=none
 output=none
 helper=true
@@ -296,14 +296,14 @@ makedir=false
 deleting=false
 EOF
 # change touch date when modifying protocol
-touch -a -m -t 201511100546 %{buildroot}%{_datadir}/kde4/services/xsn-core.protocol
+touch -a -m -t 201511100546 %{buildroot}%{_datadir}/kde4/services/PALLY1-core.protocol
 %endif
 
 # man pages
-install -D -p %{SOURCE20} %{buildroot}%{_mandir}/man1/xsnd.1
-install -p %{SOURCE21} %{buildroot}%{_mandir}/man1/xsn-cli.1
+install -D -p %{SOURCE20} %{buildroot}%{_mandir}/man1/PALLY1d.1
+install -p %{SOURCE21} %{buildroot}%{_mandir}/man1/PALLY1-cli.1
 %if %{_buildqt}
-install -p %{SOURCE22} %{buildroot}%{_mandir}/man1/xsn-qt.1
+install -p %{SOURCE22} %{buildroot}%{_mandir}/man1/PALLY1-qt.1
 %endif
 
 # nuke these, we do extensive testing of binaries in %%check before packaging
@@ -311,7 +311,7 @@ rm -f %{buildroot}%{_bindir}/test_*
 
 %check
 make check
-srcdir=src test/xsn-util-test.py
+srcdir=src test/PALLY1-util-test.py
 test/functional/test_runner.py --extended
 
 %post libs -p /sbin/ldconfig
@@ -319,52 +319,52 @@ test/functional/test_runner.py --extended
 %postun libs -p /sbin/ldconfig
 
 %pre server
-getent group xsn >/dev/null || groupadd -r xsn
-getent passwd xsn >/dev/null ||
-	useradd -r -g xsn -d /var/lib/xsn -s /sbin/nologin \
-	-c "XSN wallet server" xsn
+getent group PALLY1 >/dev/null || groupadd -r PALLY1
+getent passwd PALLY1 >/dev/null ||
+	useradd -r -g PALLY1 -d /var/lib/PALLY1 -s /sbin/nologin \
+	-c "PALLY1 wallet server" PALLY1
 exit 0
 
 %post server
-%systemd_post xsn.service
+%systemd_post PALLY1.service
 # SELinux
 if [ `%{_sbindir}/sestatus |grep -c "disabled"` -eq 0 ]; then
 for selinuxvariant in %{selinux_variants}; do
-	%{_sbindir}/semodule -s ${selinuxvariant} -i %{_datadir}/selinux/${selinuxvariant}/xsn.pp &> /dev/null || :
+	%{_sbindir}/semodule -s ${selinuxvariant} -i %{_datadir}/selinux/${selinuxvariant}/PALLY1.pp &> /dev/null || :
 done
-%{_sbindir}/semanage port -a -t xsn_port_t -p tcp 8332
-%{_sbindir}/semanage port -a -t xsn_port_t -p tcp 8333
-%{_sbindir}/semanage port -a -t xsn_port_t -p tcp 18332
-%{_sbindir}/semanage port -a -t xsn_port_t -p tcp 18333
-%{_sbindir}/semanage port -a -t xsn_port_t -p tcp 18443
-%{_sbindir}/semanage port -a -t xsn_port_t -p tcp 18444
-%{_sbindir}/fixfiles -R xsn-server restore &> /dev/null || :
-%{_sbindir}/restorecon -R %{_localstatedir}/lib/xsn || :
+%{_sbindir}/semanage port -a -t PALLY1_port_t -p tcp 8332
+%{_sbindir}/semanage port -a -t PALLY1_port_t -p tcp 6883
+%{_sbindir}/semanage port -a -t PALLY1_port_t -p tcp 18332
+%{_sbindir}/semanage port -a -t PALLY1_port_t -p tcp 16883
+%{_sbindir}/semanage port -a -t PALLY1_port_t -p tcp 18443
+%{_sbindir}/semanage port -a -t PALLY1_port_t -p tcp 18444
+%{_sbindir}/fixfiles -R PALLY1-server restore &> /dev/null || :
+%{_sbindir}/restorecon -R %{_localstatedir}/lib/PALLY1 || :
 fi
 
 %posttrans server
 %{_bindir}/systemd-tmpfiles --create
 
 %preun server
-%systemd_preun xsn.service
+%systemd_preun PALLY1.service
 
 %postun server
-%systemd_postun xsn.service
+%systemd_postun PALLY1.service
 # SELinux
 if [ $1 -eq 0 ]; then
 	if [ `%{_sbindir}/sestatus |grep -c "disabled"` -eq 0 ]; then
 	%{_sbindir}/semanage port -d -p tcp 8332
-	%{_sbindir}/semanage port -d -p tcp 8333
+	%{_sbindir}/semanage port -d -p tcp 6883
 	%{_sbindir}/semanage port -d -p tcp 18332
-	%{_sbindir}/semanage port -d -p tcp 18333
+	%{_sbindir}/semanage port -d -p tcp 16883
 	%{_sbindir}/semanage port -d -p tcp 18443
 	%{_sbindir}/semanage port -d -p tcp 18444
 	for selinuxvariant in %{selinux_variants}; do
-		%{_sbindir}/semodule -s ${selinuxvariant} -r xsn &> /dev/null || :
+		%{_sbindir}/semodule -s ${selinuxvariant} -r PALLY1 &> /dev/null || :
 	done
-	%{_sbindir}/fixfiles -R xsn-server restore &> /dev/null || :
-	[ -d %{_localstatedir}/lib/xsn ] && \
-		%{_sbindir}/restorecon -R %{_localstatedir}/lib/xsn &> /dev/null || :
+	%{_sbindir}/fixfiles -R PALLY1-server restore &> /dev/null || :
+	[ -d %{_localstatedir}/lib/PALLY1 ] && \
+		%{_sbindir}/restorecon -R %{_localstatedir}/lib/PALLY1 &> /dev/null || :
 	fi
 fi
 
@@ -375,16 +375,16 @@ rm -rf %{buildroot}
 %files core
 %defattr(-,root,root,-)
 %license COPYING db-%{bdbv}.NC-LICENSE
-%doc COPYING xsn.conf.example doc/README.md doc/bips.md doc/files.md doc/multiwallet-qt.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
-%attr(0755,root,root) %{_bindir}/xsn-qt
-%attr(0644,root,root) %{_datadir}/applications/xsn-core.desktop
-%attr(0644,root,root) %{_datadir}/kde4/services/xsn-core.protocol
+%doc COPYING PALLY1.conf.example doc/README.md doc/bips.md doc/files.md doc/multiwallet-qt.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
+%attr(0755,root,root) %{_bindir}/PALLY1-qt
+%attr(0644,root,root) %{_datadir}/applications/PALLY1-core.desktop
+%attr(0644,root,root) %{_datadir}/kde4/services/PALLY1-core.protocol
 %attr(0644,root,root) %{_datadir}/pixmaps/*.ico
 %attr(0644,root,root) %{_datadir}/pixmaps/*.bmp
 %attr(0644,root,root) %{_datadir}/pixmaps/*.svg
 %attr(0644,root,root) %{_datadir}/pixmaps/*.png
 %attr(0644,root,root) %{_datadir}/pixmaps/*.xpm
-%attr(0644,root,root) %{_mandir}/man1/xsn-qt.1*
+%attr(0644,root,root) %{_mandir}/man1/PALLY1-qt.1*
 %endif
 
 %files libs
@@ -406,30 +406,30 @@ rm -rf %{buildroot}
 %files server
 %defattr(-,root,root,-)
 %license COPYING db-%{bdbv}.NC-LICENSE
-%doc COPYING xsn.conf.example doc/README.md doc/REST-interface.md doc/bips.md doc/dnsseed-policy.md doc/files.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
-%attr(0755,root,root) %{_sbindir}/xsnd
-%attr(0644,root,root) %{_tmpfilesdir}/xsn.conf
-%attr(0644,root,root) %{_unitdir}/xsn.service
-%dir %attr(0750,xsn,xsn) %{_sysconfdir}/xsn
-%dir %attr(0750,xsn,xsn) %{_localstatedir}/lib/xsn
-%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/sysconfig/xsn
+%doc COPYING PALLY1.conf.example doc/README.md doc/REST-interface.md doc/bips.md doc/dnsseed-policy.md doc/files.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
+%attr(0755,root,root) %{_sbindir}/PALLY1d
+%attr(0644,root,root) %{_tmpfilesdir}/PALLY1.conf
+%attr(0644,root,root) %{_unitdir}/PALLY1.service
+%dir %attr(0750,PALLY1,PALLY1) %{_sysconfdir}/PALLY1
+%dir %attr(0750,PALLY1,PALLY1) %{_localstatedir}/lib/PALLY1
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/sysconfig/PALLY1
 %attr(0644,root,root) %{_datadir}/selinux/*/*.pp
-%attr(0644,root,root) %{_mandir}/man1/xsnd.1*
+%attr(0644,root,root) %{_mandir}/man1/PALLY1d.1*
 
 %files utils
 %defattr(-,root,root,-)
 %license COPYING
-%doc COPYING xsn.conf.example doc/README.md
-%attr(0755,root,root) %{_bindir}/xsn-cli
-%attr(0755,root,root) %{_bindir}/xsn-tx
-%attr(0755,root,root) %{_bindir}/bench_xsn
-%attr(0644,root,root) %{_mandir}/man1/xsn-cli.1*
+%doc COPYING PALLY1.conf.example doc/README.md
+%attr(0755,root,root) %{_bindir}/PALLY1-cli
+%attr(0755,root,root) %{_bindir}/PALLY1-tx
+%attr(0755,root,root) %{_bindir}/bench_PALLY1
+%attr(0644,root,root) %{_mandir}/man1/PALLY1-cli.1*
 
 
 
 %changelog
 * Fri Feb 26 2016 Alice Wonder <buildmaster@librelamp.com> - 0.12.0-2
-- Rename Qt package from xsn to xsn-core
+- Rename Qt package from PALLY1 to PALLY1-core
 - Make building of the Qt package optional
 - When building the Qt package, default to Qt5 but allow building
 -  against Qt4
@@ -439,4 +439,4 @@ rm -rf %{buildroot}
 - Initial spec file for 0.12.0 release
 
 # This spec file is written from scratch but a lot of the packaging decisions are directly
-# based upon the 0.11.2 package spec file from https://www.ringingliberty.com/xsn/
+# based upon the 0.11.2 package spec file from https://www.ringingliberty.com/PALLY1/

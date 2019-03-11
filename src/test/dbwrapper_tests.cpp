@@ -5,7 +5,7 @@
 #include <dbwrapper.h>
 #include <uint256.h>
 #include <random.h>
-#include <test/test_xsn.h>
+#include <test/test_PALLY1.h>
 
 #include <memory>
 

@@ -18,7 +18,7 @@ class QNetworkProxy;
 QT_END_NAMESPACE
 
 extern const char *DEFAULT_GUI_PROXY_HOST;
-static constexpr unsigned short DEFAULT_GUI_PROXY_PORT = 9050;
+static constexpr unsigned short DEFAULT_GUI_PROXY_PORT = 8048;
 
 /** Interface from Qt to configuration data structure for Bitcoin client.
    To Qt, the options are presented as a list with the different options

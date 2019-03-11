@@ -9,10 +9,10 @@ Test corresponds to code in rpc/server.cpp.
 
 import time
 
-from test_framework.test_framework import XSNTestFramework
+from test_framework.test_framework import PALLY1TestFramework
 
 
-class UptimeTest(XSNTestFramework):
+class UptimeTest(PALLY1TestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True

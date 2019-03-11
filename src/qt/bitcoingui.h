@@ -6,7 +6,7 @@
 #define BITCOIN_QT_BITCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/xsn-config.h>
+#include <config/PALLY1-config.h>
 #endif
 
 #include <amount.h>
@@ -275,7 +275,7 @@ private Q_SLOTS:
     void showPeers();
     void showRepair();
 
-    /** Open external (default) editor with xsn.conf */
+    /** Open external (default) editor with PALLY1.conf */
     void showConfEditor();
     /** Open external (default) editor with masternode.conf */
     void showMNConfEditor();

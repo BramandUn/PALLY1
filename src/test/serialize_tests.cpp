@@ -5,7 +5,7 @@
 #include <serialize.h>
 #include <streams.h>
 #include <hash.h>
-#include <test/test_xsn.h>
+#include <test/test_PALLY1.h>
 
 #include <stdint.h>
 

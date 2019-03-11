@@ -1,25 +1,25 @@
-XSN version 0.6.0 is now available for download at:
-http://sourceforge.net/projects/xsn/files/XSN/xsn-0.6.0/test/
+PALLY1 version 0.6.0 is now available for download at:
+http://sourceforge.net/projects/PALLY1/files/PALLY1/PALLY1-0.6.0/test/
 
 This release includes more than 20 language localizations.
 More translations are welcome; join the
 project at Transifex to help:
-https://www.transifex.net/projects/p/xsn/
+https://www.transifex.net/projects/p/PALLY1/
 
 Please report bugs using the issue tracker at github:
-https://github.com/xsn/xsn/issues
+https://github.com/PALLY1/PALLY1/issues
 
 Project source code is hosted at github; we are no longer
 distributing .tar.gz files here, you can get them
 directly from github:
-https://github.com/xsn/xsn/tarball/v0.6.0  # .tar.gz
-https://github.com/xsn/xsn/zipball/v0.6.0  # .zip
+https://github.com/PALLY1/PALLY1/tarball/v0.6.0  # .tar.gz
+https://github.com/PALLY1/PALLY1/zipball/v0.6.0  # .zip
 
 For Ubuntu users, there is a ppa maintained by Matt Corallo which
 you can add to your system so that it will automatically keep
-xsn up-to-date.  Just type
-sudo apt-add-repository ppa:xsn/xsn
-in your terminal, then install the xsn-qt package.
+PALLY1 up-to-date.  Just type
+sudo apt-add-repository ppa:PALLY1/PALLY1
+in your terminal, then install the PALLY1-qt package.
 
 
 KNOWN ISSUES
@@ -38,30 +38,30 @@ hours).
 
 Backup Wallet menu option.
 
-XSN-Qt can display and save QR codes for sending
+PALLY1-Qt can display and save QR codes for sending
 and receiving addresses.
 
 New context menu on addresses to copy/edit/delete them.
 
 New Sign Message dialog that allows you to prove that you
-own a xsn address by creating a digital
+own a PALLY1 address by creating a digital
 signature.
 
 New wallets created with this version will
 use 33-byte 'compressed' public keys instead of
 65-byte public keys, resulting in smaller
-transactions and less traffic on the xsn
+transactions and less traffic on the PALLY1
 network. The shorter keys are already supported
 by the network but wallet.dat files containing
 short keys are not compatible with earlier
-versions of XSN-Qt/xsnd.
+versions of PALLY1-Qt/PALLY1d.
 
 New command-line argument -blocknotify=<command>
 that will spawn a shell process to run <command> 
 when a new block is accepted.
 
 New command-line argument -splash=0 to disable
-XSN-Qt's initial splash screen
+PALLY1-Qt's initial splash screen
 
 validateaddress JSON-RPC api command output includes
 two new fields for addresses in the wallet:
@@ -104,11 +104,11 @@ attacks were fixed.
 
 NOT YET IMPLEMENTED FEATURES
 
-Support for clicking on xsn: URIs and
-opening/launching XSN-Qt is available only on Linux,
+Support for clicking on PALLY1: URIs and
+opening/launching PALLY1-Qt is available only on Linux,
 and only if you configure your desktop to launch
-XSN-Qt. All platforms support dragging and dropping
-xsn: URIs onto the XSN-Qt window to start
+PALLY1-Qt. All platforms support dragging and dropping
+PALLY1: URIs onto the PALLY1-Qt window to start
 payment.
 
 
@@ -117,7 +117,7 @@ PRELIMINARY SUPPORT FOR MULTISIGNATURE TRANSACTIONS
 This release has preliminary support for multisignature
 transactions-- transactions that require authorization
 from more than one person or device before they
-will be accepted by the xsn network.
+will be accepted by the PALLY1 network.
 
 Prior to this release, multisignature transactions
 were considered 'non-standard' and were ignored;
@@ -125,13 +125,13 @@ with this release multisignature transactions are
 considered standard and will start to be relayed
 and accepted into blocks.
 
-It is expected that future releases of XSN-Qt
+It is expected that future releases of PALLY1-Qt
 will support the creation of multisignature transactions,
 once enough of the network has upgraded so relaying
 and validating them is robust.
 
 For this release, creation and testing of multisignature
-transactions is limited to the xsn test network using
+transactions is limited to the PALLY1 test network using
 the "addmultisigaddress" JSON-RPC api call.
 
 Short multisignature address support is included in this

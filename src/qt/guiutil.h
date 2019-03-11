@@ -48,7 +48,7 @@ namespace GUIUtil
     // Set up widget for address
     void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent);
 
-    // Parse "xsn:" URI into recipient object, return true on successful parsing
+    // Parse "PALLY1:" URI into recipient object, return true on successful parsing
     bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out);
     bool parseBitcoinURI(QString uri, SendCoinsRecipient *out);
     QString formatBitcoinURI(const SendCoinsRecipient &info);
@@ -120,7 +120,7 @@ namespace GUIUtil
     // Open the config file
     bool openBitcoinConf();
 
-    // Open xsn.conf
+    // Open PALLY1.conf
     void openConfigfile();
 
     // Open masternode.conf

@@ -1,22 +1,22 @@
-XSN Core version 0.14.2 is now available from:
+PALLY1 Core version 0.14.2 is now available from:
 
-  <https://xsn.org/bin/xsn-core-0.14.2/>
+  <https://PALLY1.org/bin/PALLY1-core-0.14.2/>
 
 This is a new minor version release, including various bugfixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/xsn/xsn/issues>
+  <https://github.com/PALLY1/PALLY1/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://xsncore.org/en/list/announcements/join/>
+  <https://PALLY1core.org/en/list/announcements/join/>
 
 Compatibility
 ==============
 
-XSN Core is extensively tested on multiple operating systems using
+PALLY1 Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -24,7 +24,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-XSN Core should also work on most other Unix-like systems but is not
+PALLY1 Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
@@ -40,7 +40,7 @@ other impact.
 
 This only affects users that have explicitly enabled UPnP through the GUI
 setting or through the `-upnp` option, as since the last UPnP vulnerability
-(in XSN Core 0.10.3) it has been disabled by default.
+(in PALLY1 Core 0.10.3) it has been disabled by default.
 
 If you use this option, it is recommended to upgrade to this version as soon as
 possible.
@@ -48,7 +48,7 @@ possible.
 Known Bugs
 ==========
 
-Since 0.14.0 the approximate transaction fee shown in XSN-Qt when using coin
+Since 0.14.0 the approximate transaction fee shown in PALLY1-Qt when using coin
 control and smart fee estimation does not reflect any change in target from the
 smart fee slider. It will only present an approximate fee calculated using the
 default target. The fee calculated using the correct target is still applied to
@@ -71,7 +71,7 @@ git merge commit are mentioned.
 
 ### Build system
 - #10414 `ffb0c4b` miniupnpc 2.0.20170509 (fanquake)
-- #10228 `ae479bc` Regenerate xsn-config.h as necessary (theuni)
+- #10228 `ae479bc` Regenerate PALLY1-config.h as necessary (theuni)
 
 ### Miscellaneous
 - #10245 `44a17f2` Minor fix in build documentation for FreeBSD 11 (shigeya)
@@ -98,5 +98,5 @@ Thanks to everyone who directly contributed to this release:
 - Shigeya Suzuki
 - Wladimir J. van der Laan
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/xsn/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/PALLY1/).
 

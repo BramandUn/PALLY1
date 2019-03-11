@@ -1,24 +1,24 @@
-XSN version 0.7.0 is now available for download at:
-  http://sourceforge.net/projects/xsn/files/XSN/xsn-0.7.0/
+PALLY1 version 0.7.0 is now available for download at:
+  http://sourceforge.net/projects/PALLY1/files/PALLY1/PALLY1-0.7.0/
 
-We recommend that everybody running prior versions of xsnd/XSN-Qt
+We recommend that everybody running prior versions of PALLY1d/PALLY1-Qt
 upgrade to this release, except for users running Mac OSX 10.5.
 
 Please report bugs using the issue tracker at github:
-  https://github.com/xsn/xsn/issues
+  https://github.com/PALLY1/PALLY1/issues
 
 Project source code is hosted at github; you can get
 source-only tarballs/zipballs directly from there:
-  https://github.com/xsn/xsn/tarball/v0.7.0  # .tar.gz
-  https://github.com/xsn/xsn/zipball/v0.7.0  # .zip
+  https://github.com/PALLY1/PALLY1/tarball/v0.7.0  # .tar.gz
+  https://github.com/PALLY1/PALLY1/zipball/v0.7.0  # .zip
 
 Ubuntu Linux users can use the "Personal Package Archive" (PPA)
 maintained by Matt Corallo to automatically keep 
-xsn up-to-date.  Just type
-  sudo apt-add-repository ppa:xsn/xsn
+PALLY1 up-to-date.  Just type
+  sudo apt-add-repository ppa:PALLY1/PALLY1
   sudo apt-get update
-in your terminal, then install the xsn-qt package:
-  sudo apt-get install xsn-qt
+in your terminal, then install the PALLY1-qt package:
+  sudo apt-get install PALLY1-qt
 
 
 How to Upgrade
@@ -27,10 +27,10 @@ If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
 Code:
-/Applications/XSN-Qt
+/Applications/PALLY1-Qt
 (on Mac) or
 Code:
-xsnd/xsn-qt
+PALLY1d/PALLY1-qt
 (on Linux).
 
 If you were running on Linux with a version that might have been compiled
@@ -45,14 +45,14 @@ Incompatible Changes
   and 'getrawmempool' commands.
 * Remove deprecated RPC 'getblocknumber'
 
-XSN Improvement Proposals implemented
+PALLY1 Improvement Proposals implemented
 
 BIP 22 - 'getblocktemplate', 'submitblock' RPCs
 BIP 34 - block version 2, height in coinbase
 BIP 35 - 'mempool' message, extended 'getdata' message behavior
 
 
-Core xsn handling and blockchain database
+Core PALLY1 handling and blockchain database
 
 * Reduced CPU usage, by eliminating some redundant hash calculations
 * Cache signature verifications, to eliminate redundant signature checks
@@ -109,7 +109,7 @@ Qt GUI
 * Add 2 labels to the overviewpage that display Wallet and Transaction status (obsolete or current)
 * Extend the optionsdialog (e.g. language selection) and re-work it to a tabbed UI
 * Merge sign/verify message into a single window with tabbed UI
-* Ensure a changed xsn unit immediately updates all GUI elements that use units
+* Ensure a changed PALLY1 unit immediately updates all GUI elements that use units
 * Update QR Code dialog
 * Improve error reporting at startup
 * Fine-grained UI updates for a much smoother UI during block downloads
@@ -119,8 +119,8 @@ Qt GUI
 * Much better translations
 * Override progress bar design on platforms with segmented progress bars to assist with readability
 * Added 'immature balance' display on the overview page
-* (Windows only): enable ASLR and DEP for xsn-qt.exe
-* (Windows only): add meta-data to xsn-qt.exe (e.g. description)
+* (Windows only): enable ASLR and DEP for PALLY1-qt.exe
+* (Windows only): add meta-data to PALLY1-qt.exe (e.g. description)
 
 Internal codebase
 
@@ -131,7 +131,7 @@ Internal codebase
 Miscellaneous
 
 * Reopen debug.log upon SIGHUP
-* Bash programmable completion for xsnd(1)
+* Bash programmable completion for PALLY1d(1)
 * On supported OS's, each thread is given a useful name
 
 

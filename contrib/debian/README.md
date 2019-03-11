@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package xsnd/xsn-qt
-for Debian-based Linux systems. If you compile xsnd/xsn-qt yourself, there are some useful files here.
+This directory contains files used to package PALLY1d/PALLY1-qt
+for Debian-based Linux systems. If you compile PALLY1d/PALLY1-qt yourself, there are some useful files here.
 
-## xsn: URI support ##
+## PALLY1: URI support ##
 
 
-xsn-qt.desktop  (Gnome / Open Desktop)
+PALLY1-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install xsn-qt.desktop
+	sudo desktop-file-install PALLY1-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your xsn-qt binary to `/usr/bin`
-and the `../../share/pixmaps/xsn128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your PALLY1-qt binary to `/usr/bin`
+and the `../../share/pixmaps/PALLY1128.png` to `/usr/share/pixmaps`
 
-xsn-qt.protocol (KDE)
+PALLY1-qt.protocol (KDE)
 

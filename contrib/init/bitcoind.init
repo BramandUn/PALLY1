@@ -1,36 +1,36 @@
 #!/bin/bash
 #
-#  xsnd The xsn core server.
+#  PALLY1d The PALLY1 core server.
 #
 #
 # chkconfig: 345 80 20
-# description: xsnd
-# processname: xsnd
+# description: PALLY1d
+# processname: PALLY1d
 #
 
 # Source function library.
 . /etc/init.d/functions
 
-# you can override defaults in /etc/sysconfig/xsnd, see below
-if [ -f /etc/sysconfig/xsnd ]; then
-        . /etc/sysconfig/xsnd
+# you can override defaults in /etc/sysconfig/PALLY1d, see below
+if [ -f /etc/sysconfig/PALLY1d ]; then
+        . /etc/sysconfig/PALLY1d
 fi
 
 RETVAL=0
 
-prog=xsnd
-# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/xsnd
-lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/xsnd}
+prog=PALLY1d
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/PALLY1d
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/PALLY1d}
 
-# xsnd defaults to /usr/bin/xsnd, override with BITCOIND_BIN
-xsnd=${BITCOIND_BIN-/usr/bin/xsnd}
+# PALLY1d defaults to /usr/bin/PALLY1d, override with BITCOIND_BIN
+PALLY1d=${BITCOIND_BIN-/usr/bin/PALLY1d}
 
-# xsnd opts default to -disablewallet, override with BITCOIND_OPTS
-xsnd_opts=${BITCOIND_OPTS--disablewallet}
+# PALLY1d opts default to -disablewallet, override with BITCOIND_OPTS
+PALLY1d_opts=${BITCOIND_OPTS--disablewallet}
 
 start() {
     echo -n $"Starting $prog: "
-    daemon $DAEMONOPTS $xsnd $xsnd_opts
+    daemon $DAEMONOPTS $PALLY1d $PALLY1d_opts
     RETVAL=$?
     echo
     [ $RETVAL -eq 0 ] && touch $lockfile

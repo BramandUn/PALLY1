@@ -1,8 +1,8 @@
-/usr/bin/xsn-cli		--	gen_context(system_u:object_r:xsn_exec_t,s0)
-/usr/sbin/xsnd		--	gen_context(system_u:object_r:xsn_exec_t,s0)
-/usr/lib(64)?/xsn/xsnd		--	gen_context(system_u:object_r:xsn_exec_t,s0)
+/usr/bin/PALLY1-cli		--	gen_context(system_u:object_r:PALLY1_exec_t,s0)
+/usr/sbin/PALLY1d		--	gen_context(system_u:object_r:PALLY1_exec_t,s0)
+/usr/lib(64)?/PALLY1/PALLY1d		--	gen_context(system_u:object_r:PALLY1_exec_t,s0)
 
-/etc/xsn(/.*)?		gen_context(system_u:object_r:xsn_conf_t,s0)
-/var/lib/xsn(/.*)?		gen_context(system_u:object_r:xsn_var_lib_t,s0)
+/etc/PALLY1(/.*)?		gen_context(system_u:object_r:PALLY1_conf_t,s0)
+/var/lib/PALLY1(/.*)?		gen_context(system_u:object_r:PALLY1_var_lib_t,s0)
 
-(/var)?/run/xsnd(/.*)?   gen_context(system_u:object_r:xsn_var_run_t,s0)
+(/var)?/run/PALLY1d(/.*)?   gen_context(system_u:object_r:PALLY1_var_run_t,s0)

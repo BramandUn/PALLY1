@@ -14,7 +14,7 @@ from collections import defaultdict
 import time
 
 from test_framework.mininode import *
-from test_framework.test_framework import XSNTestFramework
+from test_framework.test_framework import PALLY1TestFramework
 from test_framework.util import *
 
 class TestP2PConn(P2PInterface):
@@ -29,7 +29,7 @@ class TestP2PConn(P2PInterface):
         message.block.calc_sha256()
         self.block_receive_map[message.block.sha256] += 1
 
-class MaxUploadTest(XSNTestFramework):
+class MaxUploadTest(PALLY1TestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

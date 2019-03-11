@@ -4,7 +4,7 @@
 
 #include <streams.h>
 #include <support/allocators/zeroafterfree.h>
-#include <test/test_xsn.h>
+#include <test/test_PALLY1.h>
 
 #include <boost/assign/std/vector.hpp> // for 'operator+=()'
 #include <boost/test/unit_test.hpp>

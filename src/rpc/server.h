@@ -138,7 +138,7 @@ public:
 };
 
 /**
- * XSN RPC command dispatcher.
+ * PALLY1 RPC command dispatcher.
  */
 class CRPCTable
 {

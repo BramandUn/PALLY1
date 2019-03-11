@@ -8,10 +8,10 @@
 import os
 import shutil
 
-from test_framework.test_framework import XSNTestFramework, initialize_datadir
+from test_framework.test_framework import PALLY1TestFramework, initialize_datadir
 
 
-class BlocksdirTest(XSNTestFramework):
+class BlocksdirTest(PALLY1TestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

@@ -15,10 +15,10 @@ import copy
 from test_framework.blocktools import create_block, create_coinbase, create_transaction
 from test_framework.messages import COIN
 from test_framework.mininode import network_thread_start, P2PDataStore
-from test_framework.test_framework import XSNTestFramework
+from test_framework.test_framework import PALLY1TestFramework
 from test_framework.util import assert_equal
 
-class InvalidBlockRequestTest(XSNTestFramework):
+class InvalidBlockRequestTest(PALLY1TestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True

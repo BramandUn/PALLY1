@@ -5,7 +5,7 @@
 #include <util.h>
 
 #include <support/allocators/secure.h>
-#include <test/test_xsn.h>
+#include <test/test_PALLY1.h>
 
 #include <memory>
 

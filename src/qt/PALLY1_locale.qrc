@@ -1,0 +1,20 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/PALLY1_bg.qm</file>
+        <file alias="de">locale/PALLY1_de.qm</file>
+        <file alias="en">locale/PALLY1_en.qm</file>
+        <file alias="es">locale/PALLY1_es.qm</file>
+        <file alias="fi">locale/PALLY1_fi.qm</file>
+        <file alias="fr">locale/PALLY1_fr.qm</file>
+        <file alias="it">locale/PALLY1_it.qm</file>
+        <file alias="ja">locale/PALLY1_ja.qm</file>
+        <file alias="pl">locale/PALLY1_pl.qm</file>
+        <file alias="pt">locale/PALLY1_pt.qm</file>
+        <file alias="ru">locale/PALLY1_ru.qm</file>
+        <file alias="sk">locale/PALLY1_sk.qm</file>
+        <file alias="sv">locale/PALLY1_sv.qm</file>
+        <file alias="vi">locale/PALLY1_vi.qm</file>
+        <file alias="zh_CN">locale/PALLY1_zh_CN.qm</file>
+        <file alias="zh_TW">locale/PALLY1_zh_TW.qm</file>
+    </qresource>
+</RCC>

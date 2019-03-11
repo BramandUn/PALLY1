@@ -5,8 +5,8 @@ connections, inter-process communication, and shared-memory,
 providing various message-oriented semantics such as publish/subscribe,
 request/reply, and push/pull.
 
-The XSN Core daemon can be configured to act as a trusted "border
-router", implementing the xsn wire protocol and relay, making
+The PALLY1 Core daemon can be configured to act as a trusted "border
+router", implementing the PALLY1 wire protocol and relay, making
 consensus decisions, maintaining the local blockchain database,
 broadcasting locally generated transactions into the network, and
 providing a queryable RPC interface to interact on a polled basis for
@@ -33,7 +33,7 @@ buffering or reassembly.
 
 ## Prerequisites
 
-The ZeroMQ feature in XSN Core requires ZeroMQ API version 4.x or
+The ZeroMQ feature in PALLY1 Core requires ZeroMQ API version 4.x or
 newer. Typically, it is packaged by distributions as something like
 *libzmq3-dev*. The C++ wrapper for ZeroMQ is *not* needed.
 
@@ -45,7 +45,7 @@ operation.
 
 By default, the ZeroMQ feature is automatically compiled in if the
 necessary prerequisites are found.  To disable, use --disable-zmq
-during the *configure* step of building xsnd:
+during the *configure* step of building PALLY1d:
 
     $ ./configure --disable-zmq (other options)
 
@@ -66,8 +66,8 @@ address. The same address can be used in more than one notification.
 
 For instance:
 
-    $ xsnd -zmqpubhashtx=tcp://127.0.0.1:28332 \
-               -zmqpubrawtx=ipc:///tmp/xsnd.tx.raw
+    $ PALLY1d -zmqpubhashtx=tcp://127.0.0.1:28332 \
+               -zmqpubrawtx=ipc:///tmp/PALLY1d.tx.raw
 
 Each PUB notification has a topic and body, where the header
 corresponds to the notification type. For instance, for the
@@ -75,7 +75,7 @@ notification `-zmqpubhashtx` the topic is `hashtx` (no null
 terminator) and the body is the transaction hash (32
 bytes).
 
-These options can also be provided in xsn.conf.
+These options can also be provided in PALLY1.conf.
 
 ZeroMQ endpoint specifiers for TCP (and others) are documented in the
 [ZeroMQ API](http://api.zeromq.org/4-0:_start).
@@ -87,9 +87,9 @@ arriving. Please see `contrib/zmq/zmq_sub.py` for a working example.
 
 ## Remarks
 
-From the perspective of xsnd, the ZeroMQ socket is write-only; PUB
+From the perspective of PALLY1d, the ZeroMQ socket is write-only; PUB
 sockets don't even have a read function. Thus, there is no state
-introduced into xsnd directly. Furthermore, no information is
+introduced into PALLY1d directly. Furthermore, no information is
 broadcast that wasn't already received from the public P2P network.
 
 No authentication or authorization is done on connecting clients; it
@@ -102,5 +102,5 @@ retrieve the chain from the last known block to the new tip.
 
 There are several possibilities that ZMQ notification can get lost
 during transmission depending on the communication type you are
-using. XSNd appends an up-counting sequence number to each
+using. PALLY1d appends an up-counting sequence number to each
 notification which allows listeners to detect lost notifications.

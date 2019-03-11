@@ -40,17 +40,17 @@ from the root of the repository.
 
 **Note**: You only need Berkeley DB if the wallet is enabled (see the section *Disable-Wallet mode* below).
 
-Build XSN Core
+Build PALLY1 Core
 ------------------------
 
-1. Clone the xsn source code and cd into `xsn`
+1. Clone the PALLY1 source code and cd into `PALLY1`
 
-        git clone https://github.com/xsn/xsn
-        cd xsn
+        git clone https://github.com/PALLY1/PALLY1
+        cd PALLY1
 
-2.  Build xsn-core:
+2.  Build PALLY1-core:
 
-    Configure and build the headless xsn binaries as well as the GUI (if Qt is found).
+    Configure and build the headless PALLY1 binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
 
@@ -69,30 +69,30 @@ Build XSN Core
 Running
 -------
 
-XSN Core is now available at `./src/xsnd`
+PALLY1 Core is now available at `./src/PALLY1d`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=xsnrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/XSN/xsn.conf"
+    echo -e "rpcuser=PALLY1rpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/PALLY1/PALLY1.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/XSN/xsn.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/PALLY1/PALLY1.conf"
 
-The first time you run xsnd, it will start downloading the blockchain. This process could take several hours.
+The first time you run PALLY1d, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/XSN/debug.log
+    tail -f $HOME/Library/Application\ Support/PALLY1/debug.log
 
 Other commands:
 -------
 
-    ./src/xsnd -daemon # Starts the xsn daemon.
-    ./src/xsn-cli --help # Outputs a list of command-line options.
-    ./src/xsn-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/PALLY1d -daemon # Starts the PALLY1 daemon.
+    ./src/PALLY1-cli --help # Outputs a list of command-line options.
+    ./src/PALLY1-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Notes
 -----
 
 * Tested on OS X 10.8 through 10.13 on 64-bit Intel processors only.
 
-* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/xsn/xsn/issues/7714)
+* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/PALLY1/PALLY1/issues/7714)

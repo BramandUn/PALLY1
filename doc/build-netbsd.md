@@ -2,7 +2,7 @@ NetBSD build guide
 ======================
 (updated for NetBSD 7.0)
 
-This guide describes how to build xsnd and command-line utilities on NetBSD.
+This guide describes how to build PALLY1d and command-line utilities on NetBSD.
 
 This guide does not contain instructions for building the GUI.
 
@@ -25,12 +25,12 @@ python27
 
 Download the source code:
 ```
-git clone https://github.com/xsn/xsn
+git clone https://github.com/PALLY1/PALLY1
 ```
 
 See [dependencies.md](dependencies.md) for a complete overview.
 
-### Building XSN Core
+### Building PALLY1 Core
 
 **Important**: Use `gmake` (the non-GNU `make` will exit with an error).
 

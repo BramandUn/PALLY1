@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. xsn_test
+	$(MAKE) -C .. PALLY1_test
 clean:
-	$(MAKE) -C .. xsn_test_clean
+	$(MAKE) -C .. PALLY1_test_clean
 check:
-	$(MAKE) -C .. xsn_test_check
+	$(MAKE) -C .. PALLY1_test_check

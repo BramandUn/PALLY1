@@ -6,7 +6,7 @@
 #include <txmempool.h>
 #include <util.h>
 
-#include <test/test_xsn.h>
+#include <test/test_PALLY1.h>
 
 #include <boost/test/unit_test.hpp>
 #include <list>

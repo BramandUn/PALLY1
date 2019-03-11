@@ -53,7 +53,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "XSN cannot be compiled without assertions."
+# error "PALLY1 cannot be compiled without assertions."
 #endif
 
 #define MICRO 0.000001
@@ -1705,7 +1705,7 @@ static bool WriteUndoDataForBlock(const CBlockUndo& blockundo, CValidationState&
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("xsn-scriptch");
+    RenameThread("PALLY1-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2095,7 +2095,7 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
     int64_t nTime3 = GetTimeMicros(); nTimeConnect += nTime3 - nTime2;
     LogPrint(BCLog::BENCH, "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs (%.2fms/blk)]\n", (unsigned)block.vtx.size(), MILLI * (nTime3 - nTime2), MILLI * (nTime3 - nTime2) / block.vtx.size(), nInputs <= 1 ? 0 : MILLI * (nTime3 - nTime2) / (nInputs-1), nTimeConnect * MICRO, nTimeConnect * MILLI / nBlocksTotal);
 
-    // XSN : MODIFIED TO CHECK MASTERNODE PAYMENTS AND SUPERBLOCKS
+    // PALLY1 : MODIFIED TO CHECK MASTERNODE PAYMENTS AND SUPERBLOCKS
 
     // It's possible that we simply don't have enough data and this could fail
     // (i.e. block itself could be a correct one and we need to store it),
@@ -2108,7 +2108,7 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
 
     std::string strError = "";
     if (!IsBlockValueValid(block, pindex->nHeight, expectedReward, pindex->nMint, strError)) {
-        return state.DoS(0, error("ConnectBlock(XSN): %s", strError), REJECT_INVALID, "bad-cb-amount");
+        return state.DoS(0, error("ConnectBlock(PALLY1): %s", strError), REJECT_INVALID, "bad-cb-amount");
     }
 
     const auto& coinbaseTransaction = (pindex->nHeight > Params().GetConsensus().nLastPoWBlock ? block.vtx[1] : block.vtx[0]);
@@ -2119,11 +2119,11 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
 
     if (!IsBlockPayeeValid(coinbaseTransaction, pindex->nHeight, expectedReward, pindex->nMint)) {
         //        mapRejectedBlocks.insert(std::make_pair(block.GetHash(), GetTime()));
-        return state.DoS(0, error("ConnectBlock(XSN): couldn't find masternode or superblock payments"),
+        return state.DoS(0, error("ConnectBlock(PALLY1): couldn't find masternode or superblock payments"),
                          REJECT_INVALID, "bad-cb-payee");
     }
 
-    // END XSN
+    // END PALLY1
 
     if (!control.Wait())
         return state.DoS(100, error("%s: CheckQueue failed", __func__), REJECT_INVALID, "block-validation-failed");

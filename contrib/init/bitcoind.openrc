@@ -2,26 +2,26 @@
 
 # backward compatibility for existing gentoo layout 
 #
-if [ -d "/var/lib/xsn/.xsn" ]; then
-	BITCOIND_DEFAULT_DATADIR="/var/lib/xsn/.xsn"
+if [ -d "/var/lib/PALLY1/.PALLY1" ]; then
+	BITCOIND_DEFAULT_DATADIR="/var/lib/PALLY1/.PALLY1"
 else
-	BITCOIND_DEFAULT_DATADIR="/var/lib/xsnd"
+	BITCOIND_DEFAULT_DATADIR="/var/lib/PALLY1d"
 fi
 
-BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/xsn/xsn.conf}
-BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/xsnd}
-BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/xsnd.pid}
+BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/PALLY1/PALLY1.conf}
+BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/PALLY1d}
+BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/PALLY1d.pid}
 BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
-BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-xsn}}
-BITCOIND_GROUP=${BITCOIND_GROUP:-xsn}
-BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/xsnd}
+BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-PALLY1}}
+BITCOIND_GROUP=${BITCOIND_GROUP:-PALLY1}
+BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/PALLY1d}
 BITCOIND_NICE=${BITCOIND_NICE:-${NICELEVEL:-0}}
 BITCOIND_OPTS="${BITCOIND_OPTS:-${BITCOIN_OPTS}}"
 
-name="XSN Core Daemon"
-description="XSN cryptocurrency P2P network daemon"
+name="PALLY1 Core Daemon"
+description="PALLY1 cryptocurrency P2P network daemon"
 
-command="/usr/bin/xsnd"
+command="/usr/bin/PALLY1d"
 command_args="-pid=\"${BITCOIND_PIDFILE}\" \
 		-conf=\"${BITCOIND_CONFIGFILE}\" \
 		-datadir=\"${BITCOIND_DATADIR}\" \
@@ -71,7 +71,7 @@ checkconfig()
 {
 	if ! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run xsnd."
+		eerror "ERROR: You must set a secure rpcpassword to run PALLY1d."
 		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"XSN Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"PALLY1 Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

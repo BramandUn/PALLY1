@@ -130,7 +130,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a XSN address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a PALLY1 address (e.g. %1)").arg(
                                    QString::fromStdString(DummyAddress(Params()))));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
@@ -139,8 +139,8 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no xsn: URI
-    if(!uri.isValid() || uri.scheme() != QString("xsn"))
+    // return if URI is not valid or is no PALLY1: URI
+    if(!uri.isValid() || uri.scheme() != QString("PALLY1"))
         return false;
 
     SendCoinsRecipient rv;
@@ -180,7 +180,7 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitcoinUnits::parse(BitcoinUnits::XSN, i->second, &rv.amount))
+                if(!BitcoinUnits::parse(BitcoinUnits::PALLY1, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -206,12 +206,12 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 
 QString formatBitcoinURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("xsn:%1").arg(info.address);
+    QString ret = QString("PALLY1:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::XSN, info.amount, false, BitcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::PALLY1, info.amount, false, BitcoinUnits::separatorNever));
         paramCount++;
     }
 
@@ -1069,7 +1069,7 @@ void openConfigfile()
 {
     boost::filesystem::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", BITCOIN_CONF_FILENAME));
 
-    /* Open xsn.conf with the associated application */
+    /* Open PALLY1.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }

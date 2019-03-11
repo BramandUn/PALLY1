@@ -250,7 +250,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction &tran
                 rcp.paymentRequest.SerializeToString(&value);
                 vOrderForm.emplace_back("PaymentRequest", std::move(value));
             }
-            else if (!rcp.message.isEmpty()) // Message from normal xsn:URI (xsn:123...?message=example)
+            else if (!rcp.message.isEmpty()) // Message from normal PALLY1:URI (PALLY1:123...?message=example)
                 vOrderForm.emplace_back("Message", rcp.message.toStdString());
         }
 

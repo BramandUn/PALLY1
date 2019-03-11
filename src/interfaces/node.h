@@ -46,7 +46,7 @@ struct MasternodeMerchantnodeCountInfo
     }
 };
 
-//! Top-level interface for a xsn node (xsnd process).
+//! Top-level interface for a PALLY1 node (PALLY1d process).
 class Node
 {
 public:

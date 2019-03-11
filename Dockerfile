@@ -23,17 +23,17 @@ RUN curl -L http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz | tar -xz -C
     make -j$(nproc) && make install && \
     cd / && rm -rf /tmp/db-4.8.30
 
-RUN useradd -mU xsn
+RUN useradd -mU PALLY1
 
-COPY . /tmp/xsncore/
+COPY . /tmp/PALLY1core/
 
-RUN cd /tmp/xsncore && \
+RUN cd /tmp/PALLY1core && \
     ./autogen.sh && \
     ./configure --without-gui --prefix=/usr && \
     make -j$(nproc) && \
     make check && \
     make install && \
-    cd / && rm -rf /tmp/xsncore
+    cd / && rm -rf /tmp/PALLY1core
 
 # Remove unused packages
 RUN apt-get remove -y \
@@ -50,15 +50,15 @@ RUN apt-get remove -y \
     libssl-dev \
     libevent-dev
 
-USER xsn:xsn
+USER PALLY1:PALLY1
 
-RUN mkdir /home/xsn/.xsncore && \
-    touch /home/xsn/.xsncore/xsn.conf
+RUN mkdir /home/PALLY1/.PALLY1core && \
+    touch /home/PALLY1/.PALLY1core/PALLY1.conf
 
-VOLUME [ "/home/xsn/.xsncore" ]
+VOLUME [ "/home/PALLY1/.PALLY1core" ]
 
-EXPOSE 62583
+EXPOSE 65530
 EXPOSE 8332
 EXPOSE 18332
 
-ENTRYPOINT ["/usr/bin/xsnd", "--conf=/home/xsn/.xsncore/xsn.conf"]
+ENTRYPOINT ["/usr/bin/PALLY1d", "--conf=/home/PALLY1/.PALLY1core/PALLY1.conf"]
