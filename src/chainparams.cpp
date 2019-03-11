@@ -41,8 +41,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  * transaction cannot be spent since it did not originally exist in the
  * database.
  *
- *   CBlock(hash=00000766747517c0afd37034a9183b5dc317b14cdda340c65ef4ca0b88be6984
-, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=05caed3a317e83e558ff5be75eaaa32c0c874a134a2b3b1f9aaba66b40750819, nTime=1541268000, nBits=1e0ffff0, nNonce=914267, vtx=1)
+ *   CBlock(hash=00000766747517c0afd37034a9183b5dc317b14cdda340c65ef4ca0b88be6984, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=05caed3a317e83e558ff5be75eaaa32c0c874a134a2b3b1f9aaba66b40750819, nTime=1541268000, nBits=1e0ffff0, nNonce=914267, vtx=1)
  *     CTransaction(hash=922ab2360f, ver=1, vin.size=1, vout.size=1, nLockTime=0)
  *     CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044c5957697265642030312f4d61722f3230313820546865205345432069732070726f62696e672063727970746f63757272656e637920636f6d70616e696573207769746820696e697469616c20636f696e206f66666572696e6773)
  *     CTxOut(nValue=50.00000000, scriptPubKey=2103042a235a39a72d7b1296313b01)
@@ -180,8 +179,7 @@ public:
 
         checkpointData = {
             {
-                { 0, uint256S("0x00000766747517c0afd37034a9183b5dc317b14cdda340c65ef4ca0b88be6984
-")},
+                { 0, uint256S("0x00000766747517c0afd37034a9183b5dc317b14cdda340c65ef4ca0b88be6984")},
             }
         };
 
@@ -281,8 +279,7 @@ public:
         genesis = CreateGenesisBlock(1541268001, 454718, 0x1e0ffff0, 1, 50 * COIN);
 
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0000095a0bce6c337c63a17d922015a30eb81decbf01da0075e67cf1da16cbaf
-"));
+        assert(consensus.hashGenesisBlock == uint256S("0000095a0bce6c337c63a17d922015a30eb81decbf01da0075e67cf1da16cbaf"));
         assert(genesis.hashMerkleRoot == uint256S("0x05caed3a317e83e558ff5be75eaaa32c0c874a134a2b3b1f9aaba66b40750819"));
 
         vFixedSeeds.clear();
@@ -314,8 +311,7 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("0000095a0bce6c337c63a17d922015a30eb81decbf01da0075e67cf1da16cbaf
-")},
+                {0, uint256S("0000095a0bce6c337c63a17d922015a30eb81decbf01da0075e67cf1da16cbaf")},
             }
         };
 
